@@ -22,12 +22,10 @@ namespace TwoChairs.Network
         {
             _photonView = GetComponent<PhotonView>();
             FindMainRigs();
-            
             if (_photonView.IsMine)
             {
-                SetActiveBodyParts(false);
+                DisableRendererForBodyParts();
             }
-
         }
 
         private void Update()
@@ -38,11 +36,12 @@ namespace TwoChairs.Network
             }
         }
 
-        private void SetActiveBodyParts(bool state)
+        private void DisableRendererForBodyParts()
         {
-            Head.gameObject.SetActive(state);
-            RightHand.gameObject.SetActive(state);
-            LeftHand.gameObject.SetActive(state);
+            foreach (var rendererItem in GetComponentsInChildren<Renderer>())
+            {
+                rendererItem.enabled = false;
+            }
         }
 
         private void MapBodyParts()
