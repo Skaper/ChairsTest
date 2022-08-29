@@ -15,6 +15,34 @@ namespace TwoChairs.Interaction
 
         private bool _isSeatOccupied;
 
+        private void Start()
+        {
+            teleporting.AddListener(OnPlayerTeleporting);
+        }
+        
+        //Some player sat down
+        private void OnPlayerTeleporting(TeleportingEventArgs teleportingData)
+        {
+            _isSeatOccupied = true;
+            teleportationProvider.endLocomotion += OnBeginNewLocomotion;
+            SatDown?.Invoke();
+        }
+        
+        private void OnBeginNewLocomotion(LocomotionSystem locomotionSystem)
+        {
+            teleportationProvider.endLocomotion -= OnBeginNewLocomotion;
+            teleportationProvider.beginLocomotion += OnChangePlace;
+            
+        }
+        
+        //Some player stood up
+        private void OnChangePlace(LocomotionSystem locomotionSystem)
+        {
+            _isSeatOccupied = false;
+            teleportationProvider.beginLocomotion -= OnChangePlace;
+            StoodUp?.Invoke();
+        }
+        
         private void OnValidate()
         {
             if (_teleportAnchorTransform == null)

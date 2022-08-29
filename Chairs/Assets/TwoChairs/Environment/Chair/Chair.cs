@@ -17,7 +17,14 @@ namespace TwoChairs.Environment.Chair
 
         private void OnEnable()
         {
-            _sitAnchor.teleporting.AddListener(OnPlayerTeleporting);
+            _sitAnchor.SatDown += OnPlayerSatDown;
+            _sitAnchor.StoodUp += OnPlayerStoodUp;
+        }
+
+        private void OnDisable()
+        {
+            _sitAnchor.SatDown -= OnPlayerSatDown;
+            _sitAnchor.StoodUp -= OnPlayerStoodUp;
         }
 
         private void Start()
@@ -32,27 +39,15 @@ namespace TwoChairs.Environment.Chair
         }
         
 
-        private void OnPlayerTeleporting(TeleportingEventArgs teleportingData)
+        private void OnPlayerSatDown()
         {
-            Debug.Log("Teleporting: " + teleportingData.interactableObject);
             _photonView.RPC("ChairInUse", RpcTarget.AllBufferedViaServer, false);
-            _sitAnchor.teleportationProvider.endLocomotion += OnBeginNewLocomotion;
         }
 
-        private void OnBeginNewLocomotion(LocomotionSystem locomotionSystem)
-        {
-            _sitAnchor.teleportationProvider.endLocomotion -= OnBeginNewLocomotion;
-            _sitAnchor.teleportationProvider.beginLocomotion += OnChangePlace;
-            
-        }
         
-        private void OnChangePlace(LocomotionSystem locomotionSystem)
+        private void OnPlayerStoodUp()
         {
-            Debug.Log("Teleporting: out");
-            
-            _sitAnchor.enabled = true;
             _photonView.RPC("ChairInUse", RpcTarget.AllBufferedViaServer, true);
-            _sitAnchor.teleportationProvider.beginLocomotion -= OnChangePlace;
         }
 
         
