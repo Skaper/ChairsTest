@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &886823652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 886823653}
+  - component: {fileID: 886823654}
+  m_Layer: 0
+  m_Name: XR Interaction Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &886823653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886823652}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.1556, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5785544971540923055}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &886823654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886823652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5785544971095805999
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +200,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 1
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 2145604194213695900, guid: 76c8375e89e8a1b4dbcae4f5b3634d38, type: 3}
+  m_ModelPrefab: {fileID: 2851149113364570279, guid: acbffc9619f6533409742d59cbcedca3, type: 3}
   m_ModelParent: {fileID: 5785544972748271797}
   m_Model: {fileID: 0}
   m_AnimateModel: 0
@@ -663,6 +707,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5785544971095806003}
+  - {fileID: 886823653}
   - {fileID: 5785544972874859896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -780,7 +825,7 @@ MonoBehaviour:
   m_UpdateTrackingType: 1
   m_EnableInputTracking: 1
   m_EnableInputActions: 1
-  m_ModelPrefab: {fileID: 7468973987389259844, guid: 440b485e16fc3fd4c99129908e668a23, type: 3}
+  m_ModelPrefab: {fileID: 5648906569514175977, guid: 70b7f757ce127c2488a12c7b639eed7a, type: 3}
   m_ModelParent: {fileID: 5785544971720704564}
   m_Model: {fileID: 0}
   m_AnimateModel: 0
@@ -1423,7 +1468,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5785544972748271797}
-  - component: {fileID: 5785544972748271802}
   m_Layer: 0
   m_Name: LeftHandRotationOffset
   m_TagString: Untagged
@@ -1446,24 +1490,6 @@ Transform:
   m_Father: {fileID: 5785544971208082273}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &5785544972748271802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785544972748271796}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2a9c34df4095f47b9ca8f975175f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Device: 1
-  m_PoseSource: 4
-  m_PoseProviderComponent: {fileID: 0}
-  m_TrackingType: 0
-  m_UpdateType: 0
-  m_UseRelativeTransform: 0
 --- !u!1 &5785544972874859899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,5 +1522,5 @@ Transform:
   - {fileID: 5785544971208082273}
   - {fileID: 5785544972490614156}
   m_Father: {fileID: 5785544971540923055}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
