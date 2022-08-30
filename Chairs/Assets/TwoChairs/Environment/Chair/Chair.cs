@@ -1,9 +1,6 @@
-﻿
-using System;
-using Photon.Pun;
+﻿using Photon.Pun;
 using TwoChairs.Interaction;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 
 namespace TwoChairs.Environment.Chair
@@ -11,20 +8,21 @@ namespace TwoChairs.Environment.Chair
     [RequireComponent(typeof(PhotonView))]
     public class Chair : MonoBehaviour
     {
-        public TeleportationSitAnchor _sitAnchor;
-
+        public TeleportationSitAnchor SitAnchor;
+        public Renderer SitIndicator;
+        
         private PhotonView _photonView;
 
         private void OnEnable()
         {
-            _sitAnchor.SatDown += OnPlayerSatDown;
-            _sitAnchor.StoodUp += OnPlayerStoodUp;
+            SitAnchor.SatDown += OnPlayerSatDown;
+            SitAnchor.StoodUp += OnPlayerStoodUp;
         }
 
         private void OnDisable()
         {
-            _sitAnchor.SatDown -= OnPlayerSatDown;
-            _sitAnchor.StoodUp -= OnPlayerStoodUp;
+            SitAnchor.SatDown -= OnPlayerSatDown;
+            SitAnchor.StoodUp -= OnPlayerStoodUp;
         }
 
         private void Start()
@@ -35,9 +33,9 @@ namespace TwoChairs.Environment.Chair
         [PunRPC]
         public void ChairInUse(bool isUse)
         {
-            _sitAnchor.enabled = isUse;
+            SitAnchor.enabled = isUse;
+            SitIndicator.material.color = isUse ? Color.green : Color.red;
         }
-        
 
         private void OnPlayerSatDown()
         {

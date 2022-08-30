@@ -1,12 +1,12 @@
-﻿using System;
-using Photon.Pun;
-using Photon.Realtime;
+﻿using Photon.Pun;
+using TwoChairs.Network.Settings;
 using UnityEngine;
-
 namespace TwoChairs.Network
 {
     public class NetworkManager : MonoBehaviourPunCallbacks
     {
+        [SerializeField]
+        private RoomSettings _roomSettings;
         private void Start()
         {
             ConnectToServer();
@@ -20,14 +20,7 @@ namespace TwoChairs.Network
         public override void OnConnectedToMaster()
         {
             base.OnConnectedToMaster();
-            RoomOptions roomOptions = new RoomOptions()
-            {
-                MaxPlayers = 6,
-                IsVisible = true,
-                IsOpen = true
-            };
-
-            PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions, TypedLobby.Default);
+            PhotonNetwork.JoinOrCreateRoom(_roomSettings.RoomName, _roomSettings.GetRoomOptions(), _roomSettings.RoomTypedLobby);
         }
 
         public override void OnJoinedRoom()

@@ -49,7 +49,6 @@ namespace TwoChairs.Interaction
                 _teleportAnchorTransform = transform;
         }
 
-
         protected void OnDrawGizmos()
         {
             if (_teleportAnchorTransform == null)
